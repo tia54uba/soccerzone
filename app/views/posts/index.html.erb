@@ -1,0 +1,28 @@
+<h1>投稿一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>開始時間</th>
+      <th>ホーム</th>
+      <th></th>
+      <th>アウェー</th>
+      <th>リーグ・カップ名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= image_tag post.user.get_profile_image(40,40) %><br>
+      <%= post.user.name %></td>
+      <td><%= post.match_date_time%></td>
+      <td><%= post.home_team %></td>
+      <td>vs</td>
+      <td><%= post.away_team %></td>
+      <td><%= post.category %></td>
+      <td><%= post.body %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
