@@ -1,9 +1,23 @@
 <div>
   <table>
+     <thead>
+    <tr>
+      <th></th>
+      <th>開始時間</th>
+      <th>ホーム</th>
+      <th></th>
+      <th>アウェー</th>
+      <th>リーグ・カップ名</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
       <td><%= image_tag @post.user.get_profile_image(40,40) %><br>
-      <%= @post.user.name %></td>
-      <td><%= @post.match_date_time %></td>
+      <%= @post.user.name %><br>
+      <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+      <td><%= @post.match_date_time.strftime("%Y年%m月%d日 %H:%M") %></td>
       <td><%= @post.home_team %></td>
       <td>vs</td>
       <td><%= @post.away_team %></td>
@@ -13,5 +27,6 @@
       <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
       <% end %>
     </tr>
+  </tbody>
   </table>
 </div>
