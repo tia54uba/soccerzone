@@ -1,0 +1,17 @@
+<div>
+<h1>プロフィール</h1>
+<div>
+  <th><%= image_tag @user.get_profile_image(60,60) %><br>
+  <%= @user.name %></th>
+</div>
+<div>
+  <%= @user.introduction %>
+</div>
+<div>
+  <%= link_to "プロフィール編集", edit_user_path(@user) %>
+</div>
+</div>
+
+<div>
+  <%= render 'posts/index', posts: @posts %>
+</div>
