@@ -1,2 +1,17 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div>
+  <table>
+    <tr>
+      <td><%= image_tag @post.user.get_profile_image(40,40) %><br>
+      <%= @post.user.name %></td>
+      <td><%= @post.match_date_time %></td>
+      <td><%= @post.home_team %></td>
+      <td>vs</td>
+      <td><%= @post.away_team %></td>
+      <td><%= @post.category %></td>
+      <td><%= @post.body %></td>
+      <% if @post.user == current_user %>
+      <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>
