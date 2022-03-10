@@ -15,8 +15,9 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= image_tag @post.user.get_profile_image(40,40) %><br>
-      <%= @post.user.name %><br>
+      <td><%= link_to user_path(@user) do %>
+        <%= image_tag @post.user.get_profile_image(40,40) %><br>
+      <%= @post.user.name %><% end %><br>
       <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></td>
       <td><%= @post.match_date_time.strftime("%Y年%m月%d日 %H:%M") %></td>
       <td><%= @post.home_team %></td>
