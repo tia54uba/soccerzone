@@ -32,6 +32,15 @@
   </table>
   </div>
 
+<% if @error_comment.errors.any? %>
+  <%= @error_comment.errors.count %>件のエラー
+  <ul>
+    <% @error_comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div>
   <%= form_with model:[@post, @post_comment] do |f| %>
     <%= f.text_area :comment, placeholder: "コメント" %>

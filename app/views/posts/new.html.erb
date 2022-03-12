@@ -1,8 +1,18 @@
 <h1>新規投稿フォーム</h1>
+
+  <% if @post.errors.any? %>
+    <%= @post.errors.count %>件のエラー
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model:@post do |f| %>
 <div>
   <%= f.label:"開始日時(日本時間)" %>
-  <%= f.text_field :match_date_time %>
+  <%= f.datetime_field :match_date_time %>
 </div>
 <div>
   <%= f.label:試合 %>

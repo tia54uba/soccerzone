@@ -11,6 +11,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +29,7 @@
       <td><%= post.body %></td>
       <td><%= link_to "コメント", new_post_post_comment_path(post.id) %></td>
       <td><%= link_to "#{post.post_comments.count}件のコメント", post_path(post.id) %></td>
+      <td><%= render 'favorites/favorite', post: post %></td>
       <% if post.user == current_user %>
       <td><%= link_to "削除する", post_path(post.id), method: :delete %></td>
       <% end %>

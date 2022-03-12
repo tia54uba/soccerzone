@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:destroy]
+
   def new
     @post = Post.new
   end
@@ -6,8 +9,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
+    if @post.save
     redirect_to posts_path
+    else
+    render :new
+    end
   end
 
   def index
@@ -30,6 +36,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:match_date_time, :home_team, :away_team, :category, :body)
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path
+    end
   end
 
 end
