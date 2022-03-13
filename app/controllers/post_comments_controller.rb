@@ -3,7 +3,6 @@ class PostCommentsController < ApplicationController
   def new
     @post_comment = PostComment.new
     @post = Post.find(params[:post_id])
-
   end
 
   def create
@@ -13,7 +12,6 @@ class PostCommentsController < ApplicationController
     if comment.save
     redirect_to post_path(post)
     else
-    @error_comment = comment
     @post_comment = PostComment.new
     @post = Post.find(params[:post_id])
     render :new

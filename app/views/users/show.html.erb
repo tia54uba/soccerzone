@@ -1,6 +1,9 @@
 <div>
 <h1>プロフィール</h1>
 <div>
+  <%= render 'relationships/btn', user: @user %>
+</div>
+<div>
   <th><%= image_tag @user.get_profile_image(60,60) %><br>
   <%= @user.name %></th>
 </div>
@@ -12,6 +15,19 @@
   <%= link_to "プロフィール編集", edit_user_path(@user) %>
 </div>
   <% end %>
+</div>
+
+<div>
+  <div>
+    <%= link_to user_followings_path(@user.id) do %>
+    <%= @user.following_user.count %><span>フォロー中</span>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to user_followers_path(@user.id) do %>
+    <%= @user.follower_user.count %><span>フォロワー</span>
+    <% end %>
+  </div>
 </div>
 
 <div>
