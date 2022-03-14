@@ -1,3 +1,5 @@
+<% if posts.exists? %>
+
 <table>
   <thead>
     <tr>
@@ -38,4 +40,6 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate posts %>
+<% else %>
+<p>検索結果はありません</p>
+<% end %>

@@ -1,8 +1,10 @@
+<% if users.exists? %>
+
 <h1>ユーザー</h1>
 <div>
   <table>
     <tbody>
-    <% @users.each do |user| %>
+    <% users.each do |user| %>
       <tr>
         <td><%= image_tag user.get_profile_image(40,40) %></td>
         <td><%= user.name %></td>
@@ -12,3 +14,7 @@
     </tbody>
   </table>
 </div>
+
+<% else %>
+<p>検索結果はありません</p>
+<% end %>

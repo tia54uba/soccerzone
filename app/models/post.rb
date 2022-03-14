@@ -14,4 +14,9 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  def self.search_for(content, method)
+    method = 'partical'
+    Post.where('home_team LIKE? OR away_team LIKE?', '%'+ content+ '%','%'+ content+ '%')
+  end
+  
 end

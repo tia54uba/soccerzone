@@ -1,0 +1,5 @@
+<% if @model == 'post' %>
+  <%= render 'posts/index', posts: @records %>
+<% elsif @model == 'user' %>
+  <%= render 'users/index', users: @records %>
+<% end %>
