@@ -1,7 +1,9 @@
 <% if user_signed_in? %>
+  <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
   <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :content %>
-    <%= f.select :model, options_for_select({"チーム名で探す" => "post", "ユーザー名で探す" => "user"}) %>
-    <%= f.submit '検索' %>
+    <%= f.text_field :content, class: "form-control form-control-dark", placeholder: "キーワード" %>
+    <%= f.select :model, options_for_select({"チーム名で探す" => "post", "ユーザー名で探す" => "user"}), class: "nav-link dropdown-toggle" %>
+    <%= f.submit '検索', class: "btn btn-warning"%>
     <% end %>
+  </div>
 <% end %>

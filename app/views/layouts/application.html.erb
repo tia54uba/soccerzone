@@ -6,38 +6,56 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "投稿フォーム", new_post_path %>
-      </li>
-      <li>
-        <%= link_to 'マイページ', user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to '投稿一覧', posts_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
-
-    <div>
-      <%= render 'searches/form' %>
-    </div>
+    <header class="p-3 bg-dark text-white">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <%= link_to root_path do %><%= image_tag 'logo.jpg', size: '40x40', class: "d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" %>
+          <% end %>
+          <% if user_signed_in? %>
+          <ul class="nav col-12 col-md-6 me-lg-auto mb-2 justify-content-center  mb-md-0">
+            <li>
+              <%= link_to 'マイページ', user_path(current_user.id), class: "nav-link px-2 text-white" %>
+            </li>
+            <li>
+              <%= link_to "投稿フォーム", new_post_path, class: "nav-link px-2 text-white" %>
+            </li>
+            <li>
+              <%= link_to '投稿一覧', posts_path, class: "nav-link px-2 text-white" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link px-2 text-white" %>
+            </li>
+          </ul>
+              <% else %>
+          <ul class="nav col-12 col-md-auto me-lg-auto mb-2 justify-content-center  mb-md-0">
+            <li>
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link px-2 text-white" %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link px-2 text-white" %>
+            </li>
+          </ul>
+              <% end %>
+          <%= render 'searches/form' %>
+        </div>
+      </div>
   </header>
     <%= yield %>
+    <div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+          <%= link_to root_path do %><%= image_tag 'logo.jpg', size: '40x40', class: "d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" %>
+      <% end %>
+      <span class="text-muted">© 2022 Miyagawa, Inc</span>
+    </div>
+
+    
+  </footer>
+</div>
   </body>
 </html>

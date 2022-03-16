@@ -1,5 +1,13 @@
 <% if @model == 'post' %>
+  <% if posts.exists? %>
   <%= render 'posts/index', posts: @records %>
+  <% else %>
+  <p>検索結果はありません</p>
+  <% end %>
 <% elsif @model == 'user' %>
+  <% if users.exists? %>
   <%= render 'users/index', users: @records %>
+  <% else %>
+  <p>検索結果はありません</p>
+  <% end %>
 <% end %>
