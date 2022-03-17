@@ -1,3 +1,4 @@
+<% if users.exists? %>
 
 <h1>ユーザー</h1>
 <div>
@@ -14,3 +15,6 @@
   </table>
 </div>
 
+<% else %>
+<p>検索結果はありません</p>
+<% end %>
