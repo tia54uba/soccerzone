@@ -34,11 +34,15 @@
               <% else %>
           <ul class="nav col-12 col-md-auto me-lg-auto mb-2 justify-content-center  mb-md-0">
             <li>
+              <%= link_to "トップページ", root_path, class: "nav-link px-2 text-white" %>
+            </li>
+            <li>
               <%= link_to "新規登録", new_user_registration_path, class: "nav-link px-2 text-white" %>
             </li>
             <li>
               <%= link_to "ログイン", new_user_session_path, class: "nav-link px-2 text-white" %>
             </li>
+
           </ul>
               <% end %>
           <%= render 'searches/form' %>
