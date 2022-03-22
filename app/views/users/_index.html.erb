@@ -6,7 +6,9 @@
     <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= image_tag user.get_profile_image(40,40) %></td>
+        <td><%= link_to user_path(user.id) do %>
+        <%= image_tag user.get_profile_image(40,40) %>
+        <% end %></td>
         <td><%= user.name %></td>
         <td><%= user.introduction %></td>
       </tr>

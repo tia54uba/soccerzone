@@ -1,54 +1,58 @@
-<div>
-<table>
-     <thead>
-    <tr>
-      <th></th>
-      <th>開始時間</th>
-      <th>ホーム</th>
-      <th></th>
-      <th>アウェー</th>
-      <th>リーグ・カップ名</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= link_to user_path(@user) do %>
-        <%= image_tag @post.user.get_profile_image(40,40) %><br>
-      <%= @post.user.name %><% end %><br>
-      <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-      <td><%= @post.match_date_time.strftime("%Y年%m月%d日 %H:%M") %></td>
-      <td><%= @post.home_team %></td>
-      <td>vs</td>
-      <td><%= @post.away_team %></td>
-      <td><%= @post.category %></td>
-      <td><%= @post.body %></td>
-      <td><%= link_to "コメントする",new_post_post_comment_path(@post.id) %></td>
-      <td class="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></td>
-      <% if @post.user == current_user %>
-      <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
-      <% end %>
-    </tr>
-  </tbody>
-  </table>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+<div class="card">
+  <div class="card-header">
+<%= link_to user_path(@post.user.id) do %>
+        <%= image_tag @post.user.get_profile_image(40,40) %>
+        <% end %>
+      <%= @post.user.name %> </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= @post.match_date_time.strftime("%Y年%m月%d日 %H:%M") %>
+      <%= @post.home_team %>vs<%= @post.away_team %>
+      <%= @post.category %>
+      </h5>
+    <p class="card-text"><%= @post.body %></p>
+    <%= link_to  new_post_post_comment_path(@post.id) do %>
+    <i class="far fa-comment"></i>
+    <% end %>
+
+    <%= link_to "#{@post.post_comments.count}件のコメント", post_path(@post.id) %>
+    <span class="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></span>
+    <% if @post.user == current_user %>
+    <%= link_to "削除する", post_path(@post.id), method: :delete %>
+    <% end %>
+
   </div>
-<div>
-  <table>
-    <tbody>
-      <% @post.post_comments.each do |post_comment| %>
-      <tr>
-        <td><%= image_tag post_comment.user.get_profile_image(40,40) %></td>
-        <td><%= post_comment.user.name %></td>
-        <td><%= post_comment.comment %></td>
-        <td><% if post_comment.user = current_user %>
-              <%= link_to "削除する",post_post_comment_path(@post, post_comment), method: :delete %>
-            <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="card-footer text-muted">
+  <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>  </div>
+  </div>
+
+
+  <% @post.post_comments.each do |post_comment| %>
+  <div class="card">
+  <div class="card-header">
+    <%= link_to user_path(post_comment.user.id) do %>
+        <%= image_tag post_comment.user.get_profile_image(40,40) %>
+    <% end %>
+    <%= post_comment.user.name %>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= post_comment.comment %></p>
+    <% if post_comment.user = current_user %>
+    <%= link_to "削除する",post_post_comment_path(@post, post_comment), method: :delete %>
+    <% end %>
+  </div>
+  <div class="card-footer text-muted">
+    <%= post_comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+  </div>
 </div>
+    <% end %>
+
+</div>
+</div>
+</div>
+
+
+
