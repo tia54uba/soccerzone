@@ -11,49 +11,48 @@
   </head>
 
   <body>
-    <header class="p-3 bg-dark text-white">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <%= link_to root_path do %><%= image_tag 'logo.jpg', size: '40x40', class: "d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" %>
-          <% end %>
-          <% if user_signed_in? %>
-          <ul class="nav col-12 col-md-6 me-lg-auto mb-2 justify-content-center  mb-md-0">
-            <li>
-              <%= link_to 'マイページ', user_path(current_user.id), class: "nav-link px-2 text-white" %>
-            </li>
-            <li>
-              <%= link_to "投稿フォーム", new_post_path, class: "nav-link px-2 text-white" %>
-            </li>
-            <li>
-              <%= link_to '投稿一覧', posts_path, class: "nav-link px-2 text-white" %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link px-2 text-white" %>
-            </li>
+ <header class="sticky-top">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+          <a class="navbar-brand" href="/">SOCCERZONE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <% if user_signed_in? %>
+                          <%= render 'searches/form' %>
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <%= link_to 'マイページ', user_path(current_user.id), class: "nav-link text-white" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "投稿フォーム", new_post_path, class: "nav-link text-white" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '投稿一覧', posts_path, class: "nav-link text-white" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "サインアウト", destroy_user_session_path,  method: :delete, class: "nav-link text-white" %>
+              </li>
+            <% else %>
+              <li class="nav-item mx-2">
+                <%= link_to "トップページ", root_path, class: "nav-link text-white" %>
+              </li>
+              <li class="nav-item mx-2">
+                <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white" %>
+              </li>
+              <li class="nav-item mx-2">
+                <%= link_to "サインイン", new_user_session_path, class: "nav-link text-white" %>
+              </li>
+            <% end %>
           </ul>
-              <% else %>
-          <ul class="nav col-12 col-md-auto me-lg-auto mb-2 justify-content-center  mb-md-0">
-            <li>
-              <%= link_to "トップページ", root_path, class: "nav-link px-2 text-white" %>
-            </li>
-            <li>
-              <%= link_to "新規登録", new_user_registration_path, class: "nav-link px-2 text-white" %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_user_session_path, class: "nav-link px-2 text-white" %>
-            </li>
-
-          </ul>
-              <% end %>
-          <%= render 'searches/form' %>
         </div>
-      </div>
-  </header>
-  <main class="m-5">
+      </nav>
+    </header>
+    <main class="m-5">
     <%= yield %>
   </main>
-  <footer class="mt-auto fixed-bottom text-center bg-dark">
-    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  <footer class="fixed-bottom text-center bg-dark text-white">
+    <p>© 2022 Miyagawa</p>
   </footer>
   </body>
 </html>

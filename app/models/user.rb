@@ -40,7 +40,7 @@ class User < ApplicationRecord
   
   def self.search_for(content, method)
     method = 'partical'
-    User.where('name LIKE ?',  '%'+content+'%')
+    User.where('name LIKE? OR introduction LIKE?',  '%'+content+'%',  '%'+content+'%')
   end
 
 end
