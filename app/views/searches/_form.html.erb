@@ -1,7 +1,8 @@
-    <div class="mx-auto">
+    <div class="row">
     <%= form_with url: search_path, method: :get, local: true do |f| %>
     <%= f.text_field :content, class: "form-control me-2", placeholder: "キーワード" %>
     <%= f.select :model, options_for_select({"投稿を探す" => "post", "ユーザーを探す" => "user"}), class: "nav-link dropdown-toggle" %>
     <%= f.submit '検索', class: "btn btn-outline-success" %>
     <% end %>
+    </div>
     </div>
