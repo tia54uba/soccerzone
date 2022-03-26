@@ -3,7 +3,7 @@
     <div class="col-8 mx-auto">
 
 <% if posts.exists? %>
-<%= render 'posts/index', posts: @posts %>
+<%= render 'posts/index', posts: posts %>
 
 <% else %>
 <p class="text-center">検索結果はありません</p>

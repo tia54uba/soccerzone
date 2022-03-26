@@ -1,8 +1,6 @@
-    <div class="row">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :content, class: "form-control me-2", placeholder: "キーワード" %>
-    <%= f.select :model, options_for_select({"投稿を探す" => "post", "ユーザーを探す" => "user"}), class: "nav-link dropdown-toggle" %>
-    <%= f.submit '検索', class: "btn btn-outline-success" %>
-    <% end %>
-    </div>
-    </div>
+
+<%= form_with url: search_path, method: :get, local: true, class: 'form-inline mb-3' do |f| %>
+<div class="form-group mr-3"><%= f.text_field :content, class: "form-control", placeholder: "キーワード" %></div>
+<div class="form-group mr-3"><%= f.select :model, options_for_select({"投稿を探す" => "post", "ユーザーを探す" => "user"}), {}, {class: "form-control"} %></div>
+<div class="form-group"><%= f.submit '検索', class: "btn btn-outline-success form-control" %></div>
+<% end %>

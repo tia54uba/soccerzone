@@ -14,8 +14,8 @@
       <% end %>
       </h5>
     <p class="card-text"><%= @user.introduction %></p>
-    <p class="card-text"><small class="text-muted"><%= link_to user_followings_path(@user.id), class: "text-dark" do %>
-    <%= @user.following_user.count %><span>フォロー中</span>
+    <p class="card-text"><small class="text-muted"><%= link_to user_followings_path(@user.id) do %>
+    <%= @user.following_user.count %><span>フォロー</span>
     <% end %>
     <%= link_to user_followers_path(@user.id) do %>
     <%= @user.follower_user.count %><span>フォロワー</span>
@@ -28,6 +28,7 @@
 
 
 <div class="col-8">
+  <%= render 'searches/form' %>
   <%= render 'posts/index', posts: @posts %>
 </div>
 </div>

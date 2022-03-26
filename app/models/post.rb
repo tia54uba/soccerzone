@@ -15,9 +15,8 @@ class Post < ApplicationRecord
   end
   
   def self.search_for(content, method)
-    method = 'partical'
-    Post.where('home_team LIKE? OR away_team LIKE? OR category LIKE? OR body LIKE?', '%'+ content+ '%','%'+ content+ '%','%'+ content+ '%','%'+ content+ '%')
-    User.where('name LIKE?', '%'+ content+ '%')
+    Post.joins(:user).where('home_team LIKE ? OR away_team LIKE ? OR category LIKE ? OR body LIKE ?', '%'+ content+ '%','%'+ content+ '%','%'+ content+ '%','%'+ content+ '%')
+    .or(Post.joins(:user).where('users.name LIKE ?', '%'+ content+ '%'))
   end
   
 end
