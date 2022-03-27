@@ -51,10 +51,15 @@
       </nav>
     </header>
     <main class="m-5">
+      <% if flash[:notice] %>
+    <div class="flash text-center mb-2">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
     <%= yield %>
   </main>
-  <footer class="fixed-bottom text-center bg-dark text-white">
-    <p>© 2022 Miyagawa</p>
+  <footer class="fixed-bottom  bg-dark text-white py-3 text-center">
+    <span>© 2022 Miyagawa</span>
   </footer>
   </body>
 </html>

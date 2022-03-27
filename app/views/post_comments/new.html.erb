@@ -17,7 +17,7 @@
     <%= link_to "#{@post.post_comments.count}件のコメント", post_path(@post.id) %>
     <span class="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></span>
     <% if @post.user == current_user %>
-    <%= link_to "削除する", post_path(@post.id), method: :delete %>
+    <%= link_to "削除する", post_path(@post.id), method: :delete, data: {confirm: "削除しますか？"} %>
     <% end %>
 
   </div>

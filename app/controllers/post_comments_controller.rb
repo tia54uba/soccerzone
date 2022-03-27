@@ -10,6 +10,7 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comments_params)
     comment.post_id = post.id
     if comment.save
+    flash[:notice] = "コメントを投稿しました!"
     redirect_to post_path(post)
     else
     @post_comment = PostComment.new
