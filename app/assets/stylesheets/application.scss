@@ -13,4 +13,18 @@
  *= require_tree .
  *= require_self
  */
- 
+
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+body {
+  background-image: image-url("1077227.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.aaa .form-control {
+  width: 476px;
+}
