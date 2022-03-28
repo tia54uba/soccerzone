@@ -1,0 +1,11 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       name: 名前
+     post:
+       match_date_time: 開始日時（日本時間）
+       home_team: ホームチーム
+       away_team: アウェーチーム
+       category: リーグ・カップ名
+       body: コメント
