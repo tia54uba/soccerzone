@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_03_13_083052) do
     t.integer "user_id"
     t.datetime "match_date_time"
     t.string "category"
+    t.text "match"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

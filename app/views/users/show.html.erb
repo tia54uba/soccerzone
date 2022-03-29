@@ -2,38 +2,40 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-     <div class="card">
-    <%= image_tag @user.get_profile_image(100,100) %>
-    <div class="card-body">
-    <div class="row">
-    <h5 class="card-title"><%= @user.name %></h5>
-      <div class="ml-auto">
-       <% if @user == current_user %>
-      <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
-      <i class="fas fa-user-cog"></i>
-      <% end %>
-      <% else %>
-      <%= render 'relationships/btn', user: @user %>
-      <% end %>
+       <div class="card">
+          <%= image_tag @user.get_profile_image(100,100) %>
+          <div class="card-body">
+          <div class="row">
+          <h5 class="card-title"><%= @user.name %></h5>
+            <div class="ml-auto">
+             <% if @user == current_user %>
+            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
+            <i class="fas fa-user-cog"></i>
+            <% end %>
+            <% else %>
+            <%= render 'relationships/btn', user: @user %>
+            <% end %>
+            </div>
+            </div>
+          <p class="card-text"><%= @user.introduction %></p>
+          <p class="card-text">
+          <small class="text-muted">
+          <%= link_to user_followings_path(@user.id) do %>
+          <%= @user.following_user.count %><span>フォロー</span>
+          <% end %>
+          <%= link_to user_followers_path(@user.id) do %>
+          <%= @user.follower_user.count %><span>フォロワー</span>
+          <% end %>
+          </small></p>
+          </div>
+        </div>
       </div>
-      </div>
-    <p class="card-text"><%= @user.introduction %></p>
-    <p class="card-text"><small class="text-muted"><%= link_to user_followings_path(@user.id) do %>
-    <%= @user.following_user.count %><span>フォロー</span>
-    <% end %>
-    <%= link_to user_followers_path(@user.id) do %>
-    <%= @user.follower_user.count %><span>フォロワー</span>
-    <% end %>
-</small></p>
+
+
+
+    <div class="col-8">
+    <%= render 'searches/form' %>
+    <%= render 'posts/index', posts: @posts %>
+    </div>
   </div>
-</div>
-</div>
-
-
-
-<div class="col-8">
-  <%= render 'searches/form' %>
-  <%= render 'posts/index', posts: @posts %>
-</div>
-</div>
 </div>

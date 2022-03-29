@@ -1,28 +1,30 @@
  <% posts.each do |post| %>
-<div class="card">
-  <div class="card-header">
-        <%= link_to user_path(post.user.id) do %>
-        <%= image_tag post.user.get_profile_image(40,40) %>
-        <% end %>
-      <%= post.user.name %> </div>
-  <div class="card-body">
-    <h5 class="card-title">
-      <span class="mr-2"><%= post.match_date_time.strftime("%Y年%m月%d日 %H:%M") %></span>
-      <span class="mx-2"><%= post.home_team %>vs<%= post.away_team %></span>
-      <span class="mx-2"><%= post.category %></span>
-    </h5>
-    <p class="card-text"><%= post.body %></p>
-    <%= link_to  new_post_post_comment_path(post.id) do %>
-    <i class="far fa-comment"></i>
-    <% end %>
-    <%= link_to "#{post.post_comments.count}件のコメント", post_path(post.id) %>
-    <span class="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></span>
-    <% if post.user == current_user %>
-    <%= link_to "削除する", post_path(post.id), method: :delete, data: {confirm: "削除しますか？"} %>
-    <% end %>
+  <div class="card">
+    <div class="card-header">
+          <%= link_to user_path(post.user.id) do %>
+          <%= image_tag post.user.get_profile_image(40,40) %>
+          <% end %>
+        <%= post.user.name %>
+    </div>
 
-  </div>
-  <div class="card-footer text-muted">
-  <%= post.created_at.strftime("%Y/%m/%d %H:%M") %>  </div>
-  </div>
+    <div class="card-body">
+      <h5 class="card-title">
+        <span class="mr-2"><%= post.match_date_time.strftime("%Y年%m月%d日 %H:%M") %></span>
+        <span class="mx-2"><%= post.home_team %>vs<%= post.away_team %></span>
+        <span class="mx-2"><%= post.category %></span>
+      </h5>
+      <p class="card-text"><%= post.body %></p>
+      <%= link_to  new_post_post_comment_path(post.id) do %>
+      <i class="far fa-comment"></i>
+      <% end %>
+      <%= link_to "#{post.post_comments.count}件のコメント", post_path(post.id) %>
+      <span class="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></span>
+      <% if post.user == current_user %>
+      <%= link_to "削除する", post_path(post.id), method: :delete, data: {confirm: "削除しますか？"} %>
+      <% end %>
+    </div>
+
+    <div class="card-footer text-muted">
+    <%= post.created_at.strftime("%Y/%m/%d %H:%M") %>  </div>
+    </div>
   <% end %>

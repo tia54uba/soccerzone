@@ -2,31 +2,31 @@
   <div class="row">
     <div class="col-8 mx-auto">
 
-<h3 class="text-center">フォロー中</h3>
-<% if @users.exists? %>
-  <% @users.each do |user| %>
-
- <div class="card">
-  <div class="row g-0">
-    <div class="col-5 col-sm-4">
-        <%= link_to user_path(user.id) do %>
-        <%= image_tag user.get_profile_image(100,100) %>
-        <% end %>
+      <h3 class="text-center">フォロー中</h3>
+      <% if @users.exists? %>
+        <% @users.each do |user| %>
+      
+       <div class="card">
+        <div class="row g-0">
+          <div class="col-5 col-sm-4">
+              <%= link_to user_path(user.id) do %>
+              <%= image_tag user.get_profile_image(100,100) %>
+              <% end %>
+              </div>
+          <div class="col-7 col-sm-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= user.name %></h5>
+              <p class="card-text"><%= user.introduction %></p>
+              <p class="card-text"><small class="text-muted"><%= user.created_at.strftime("%Y年%m月") %>から利用しています</small></p>
+            </div>
+          </div>
         </div>
-    <div class="col-7 col-sm-8">
-      <div class="card-body">
-        <h5 class="card-title"><%= user.name %></h5>
-        <p class="card-text"><%= user.introduction %></p>
-        <p class="card-text"><small class="text-muted"><%= user.created_at.strftime("%Y年%m月") %>から利用しています</small></p>
       </div>
+        <% end %>
+
+      <% else %>
+      <p class="text-center">ユーザーはいません</p>
+      <% end %>
     </div>
   </div>
-</div>
-  <% end %>
-
-<% else %>
-<p class="text-center">ユーザーはいません</p>
-<% end %>
-</div>
-</div>
 </div>
