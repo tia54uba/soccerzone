@@ -13,7 +13,6 @@
     name: "Miyagawa",
     password: "password",
     introduction: "プレミアリーグファンです！特にアーセナルが好きです"
-    #profile_image: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg")
      )
     user1.profile_image.attach(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user.jpg")
 
@@ -22,7 +21,6 @@
     name: "James",
     password: "password",
     introduction: "Jリーグファンです！よろしくお願いします"
-    #profile_image: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg")
     )
   user2.profile_image.attach(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user.jpg")
 
