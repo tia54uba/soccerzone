@@ -1,0 +1,30 @@
+<h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
+<%= @user.name %> さんとのチャット</h3>
+
+<div class="message" style="width: 600px;">
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+    <div class="mycomment">
+      <p><%= chat.message %></p>
+    </div>
+    <% else %>
+    <div class="fukidasi">
+      <div class="chatting">
+        <div class="says">
+      <p><%= chat.message %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="errors">
+  <%= render "layouts/errors", obj: @chat %>
+</div>
+
+<%= form_with model: @chat, data: {remote: true} do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit "送信", class:"btn btn-sm btn-success chat-btn" %>
+<% end %>

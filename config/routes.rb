@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   get 'searches/search'
   devise_for :users
   root to: 'homes#top'
   get 'homes/about', as: 'about'
   get 'search' => 'searches#search'
+  resources :chats, only: [:show, :create]
+
   resources :posts, only: [:new, :create, :index, :show, :destroy] do
     resource :favorites, only: [:create, :destroy]
 
