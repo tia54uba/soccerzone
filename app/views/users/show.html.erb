@@ -26,6 +26,7 @@
           <%= link_to user_followers_path(@user.id) do %>
           <%= @user.follower_user.count %><span>フォロワー</span>
           <% end %>
+          <%=link_to"いいね一覧",favorites_user_path(@user) %>
           </small></p>
           </div>
         </div>
