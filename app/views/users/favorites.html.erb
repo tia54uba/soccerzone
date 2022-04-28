@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
+      <% if @favorite_posts.exists? %>
       <%= render "posts/index", posts: @favorite_posts %>
+      <% else %>
+      <p class="text-center">いいねした投稿はありません</p>
+      <% end %>
     </div>
   </div>
 </div>
