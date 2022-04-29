@@ -1,33 +1,33 @@
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-5">
-        <h2 class="text-center">SOCCERZONE</h2>
+    <div class="row">
+      <div class="mx-auto">
+        <h2 class="col-12">SOCCERZONE</h2>
           <%= form_with model: @user, url: user_session_path do |f| %>
           <p class="alert-danger text-center">
           <%= alert %>
           </p>
-          <div class="form-group">
+          <div class="form-group col-12">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control " %>
           </div>
-      
-          <div class="form-group">
+
+          <div class="form-group col-12">
             <%= f.label :password %><br />
             <%= f.password_field :password, autocomplete: "current-password", class: "form-control " %>
           </div>
-        
+
             <% if devise_mapping.rememberable? %>
-          <div>
+          <div class="col-12">
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
           </div>
             <% end %>
-        
-          <div>
+
+          <div class="col-12">
             <%= f.submit "ログイン", class: "btn btn-info btn-block mt-2 text-white" %>
           </div>
             <% end %>
-      
+
           <%= render "devise/shared/links" %>
     </div>
   </div>
