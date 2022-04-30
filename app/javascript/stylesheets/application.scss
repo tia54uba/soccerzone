@@ -10,5 +10,36 @@ body {
 }
 
 .search .form-control {
-  width: 476px;
+  width: 480px;
+}
+
+@media screen and (max-width:1024px) {
+  .search .form-control {
+  width: 360px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .search .form-control {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width:425px) {
+  .search .form-control {
+     width: 395px;
+     margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width:375px) {
+  .search .form-control {
+     width: 345px;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .search .form-control {
+     width: 290px;
+  }
 }
