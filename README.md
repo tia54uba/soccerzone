@@ -42,5 +42,4 @@ https://docs.google.com/spreadsheets/d/1kGnCX4hNWe-39MXHmuSIcDNbIPI0YU5fScJN3cxJ
 - IDE：Cloud9
 
 ## 使用素材
-- Font Free
 - イラストAC
